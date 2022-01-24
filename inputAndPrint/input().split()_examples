@@ -18,3 +18,20 @@ n=int(n,16)
 
 # 16진수 출력 방법
 print('%x'%n)
+입력을 16진수로 받았더라도 출력을 16진수로 하기 위해서는 %x 사용해야 함.
+
+# 입력받은 문자를 유니코드로 변환하는 법
+# ord() 함수 사용하기 -> ordinal position
+uni = list(map(ord,input().split())) # 실험해보기.(내가 입력한 영문자의 각 자리를 유니코드로 변경.)
+
+# 소수점 자리수 변환하기 
+# 1. round 함수를 통해서 소수점 자리수 반올림 하기 (기존 자리수보다 짧게만 할 수 있음.)
+# 2. format 서식 지정을 통해서 소수점 자리수 조절하기   => print("{:.2f}".format(값))
+# 3. f-string 서식 지정을 통해서 소수점 자리수 제한하기 
+# https://blockdmask.tistory.com/534 참조
+
+# 논리값 (bool형, True, False)
+# not a (예약어 not을 사용하면 True -> False)
+
+# 비트 단위 논리 연산
+~ (참, 거짓을 바꾸어줌.)
