@@ -11,3 +11,10 @@ a,b = input().split()
 int(a)  error <--- 담을 곳이 필요했음
 int(b)  error <--- 동일
 print(a+b)
+
+# 16진수 입력 방법
+n=input() 
+n=int(n,16)
+
+# 16진수 출력 방법
+print('%x'%n)
