@@ -4,3 +4,10 @@ y, m, d = input().split('.')
 print(d,m,y,sep='-')
 #또는
 print(f"{d}-{m}-{y}")
+
+
+# 세번 오답이 나왔던 문제 (a,b를 입력 받아 a+b의 계산값을 출력하는 문제.)
+a,b = input().split()
+int(a)  error <--- 담을 곳이 필요했음
+int(b)  error <--- 동일
+print(a+b)
