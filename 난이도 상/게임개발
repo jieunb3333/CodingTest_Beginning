@@ -1,0 +1,30 @@
+p.118 [구현]
+
+n,m = map(int,input().split())
+a,b,site=map(int,input().split())
+game_map=list([]*n for _ in range(m))
+for i in range(0,n):
+  game_map[i]=list(map(int,input().split()))
+
+ga=[-1,0,1,0]
+gb=[0,1,0,-1]
+count=0
+pre_list=[]
+while(True):
+  site = (site+3)%4
+  toA=a+ga[site]
+  toB=b+gb[site]
+  if(0>toA or 0>toB or n-1<toA or m-1<toB):
+    for j in range(4):
+      if(site%4!=j):
+        pre_list.append(game_map[a+ga[j]][b+gb[j]])
+    if(sum(pre_list)==3):
+      break
+    continue
+  if(game_map[toA][toB]==0):
+    count+=1
+    a=toA
+    b=toB
+    game_map[a][b]=1
+    continue
+print(count)
