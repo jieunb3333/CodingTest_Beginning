@@ -1,0 +1,18 @@
+# 구현 p.115
+
+x=input()
+p=[0]*2
+p[0]= int(ord(x[0]))
+p[1]= int(x[1])
+
+l=[1,-1,1,-1,2,2,-2,-2]
+c=[2,2,-2,-2,1,-1,1,-1]
+count = 0
+for i in range(8):
+  if('a'>chr(p[0]+c[i])) or ('h'<chr(p[0]+c[i])) or (1>(p[1]+l[i])) or (8<(p[1]+l[i])):
+    continue
+  count+=1
+print(count)
+
+# 프로그래밍 이슈
+# 서로 다른 자료형을 가진 문자를 저장할 때 str각각에 접근한 뒤 리스트나 변수에 저장해주기. (line 1~ 4)
