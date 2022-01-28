@@ -1,0 +1,13 @@
+# p.311
+
+n = int(input())
+spear=list(map(int,input().split()))
+count = 0
+group = 0
+spear.sort()
+for i in range(4):
+  count = spear[i] - count -1
+  if(count==0):
+    group+=1
+print(group)
+
