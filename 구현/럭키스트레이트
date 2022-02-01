@@ -1,0 +1,12 @@
+#시뮬레이션 문항 (난이도 하)
+score = list(map(int,input()))
+
+index = len(score)//2
+first = sum(score[:index])
+second = sum(score[index:])
+# 슬라이스 할 때 후자+1 하는 것 유념하기.
+
+if first == second :
+  print("LUCKY")
+else: 
+  print("READY")
