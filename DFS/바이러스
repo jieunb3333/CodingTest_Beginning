@@ -1,0 +1,27 @@
+# 탐색 문제 (BFS나 DFS 중 아무거나 상관없음.)
+# DFS로 푼 문제
+
+computer = int(input())
+line = int(input())
+graph = [[] for _ in range(computer+1)]
+count = 0
+
+for i in range(line):
+  x,y = map(int,input().split())
+  graph[x].append(y)
+  graph[y].append(x)
+
+visited = [False]*(computer+1)
+
+def dfs(graph,v, visited):
+  global count
+  count+=1
+  visited[v]=True
+  for j in graph[v]:
+    if(visited[j]==False):
+      dfs(graph,j,visited)
+
+dfs(graph,1,visited)
+print(count-1)
+  
+
