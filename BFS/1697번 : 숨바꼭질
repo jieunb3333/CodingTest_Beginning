@@ -1,0 +1,63 @@
+# first algorithm (메모리 초과)
+
+from collections import deque
+n,k = map(int, input().split())
+
+def bfs(n,k):
+  queue = deque()
+  queue.append((n,0))
+
+  while queue:
+    x,n = queue.popleft()
+    if (x==k):
+      print(n)
+      break
+    queue.append((2*x,n+1))
+    queue.append((x+1,n+1))
+    queue.append((x-1,n+1))
+
+bfs(n,k)
+
+# (큐에 넣을 수의 범위와 x의 범위 기준을 잡기.) => 2차시도 메모리 초과
+from collections import deque
+n,k = map(int, input().split())
+
+def bfs(n,k):
+    queue = deque()
+    queue.append((n,0))
+
+    while queue:
+        x,n = queue.popleft()
+        if (x==k):
+            print(n)
+            break
+   
+        for nx in [x+1,x-1,2*x]:
+            if 0<=nx<=10**5 and not visited[nx]:
+                queue.append((nx,n+1))            
+        
+visited=[False]*(10**5+1)
+bfs(n,k)
+
+# 큐를 1차원으로 변경. dist 리스트 추가.(성공)
+
+from collections import deque
+n,k = map(int, input().split())
+
+def bfs(n,k):
+    queue = deque()
+    queue.append(n)
+
+    while queue:
+        x= queue.popleft()
+        if (x==k):
+            print(dist[x])
+            break
+   
+        for nx in [x+1,x-1,2*x]:
+            if 0<=nx<=10**5 and not dist[nx]:
+                queue.append(nx)  
+                dist[nx] = dist[x]+1          
+        
+dist=[0]*(10**5+1)
+bfs(n,k)
