@@ -1,6 +1,7 @@
+#DFS -> 백준에서 런타임에러
 n,m = map(int, input().split())
 graph = [[] for _ in range(n+1)]
-visited = [False]*(n+1)
+visited = [0]*(n+1)
 count=0
 
 for _ in range(m):
@@ -18,6 +19,37 @@ def dfs(graph,v,visited):
 for i in range(1,n+1):
   if visited[i]==0:
     dfs(graph,i,visited)
+    count+=1
+
+print(count)
+
+# BFS
+from collections import deque
+n,m = map(int, input().split())
+graph = [[] for _ in range(n+1)]
+visited = [0]*(n+1)
+count=0
+
+for _ in range(m):
+  a,b = map(int,input().split())
+  graph[a].append(b)
+  graph[b].append(a)
+
+def bfs(v):
+  queue = deque()
+  queue.append(v)
+  visited[v]=1
+
+  while queue:
+    x= queue.leftpop()
+    for nv in graph[x]:
+      if visited[nv]==0:
+        visited[nv]=1
+        queue.append(nv)
+
+for i in range(1,n+1):
+  if visited[i]==0:
+    bfs(i)
     count+=1
 
 print(count)
