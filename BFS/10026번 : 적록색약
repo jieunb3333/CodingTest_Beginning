@@ -1,0 +1,70 @@
+from collections import deque
+n= int(input())
+matrix = []
+dx = [1,-1,0,0]
+dy = [0,0,1,-1]
+for i in range(n):
+  matrix.append(input())
+
+visited = [[0]*n for _ in range(n)]
+def bfs(x,y):
+  queue = deque()
+  queue.append((x,y))
+  visited[x][y]=1
+
+  while queue:
+    x,y = queue.popleft()
+    for i in range(4):
+      nx = x + dx[i]
+      ny = y + dy[i]
+      if nx<0 or ny<0 or nx>n-1 or ny>n-1 :
+        continue
+      if matrix[nx][ny] == matrix[x][y] and visited[nx][ny]==0:
+        visited[nx][ny]=1
+        queue.append((nx,ny))
+
+def bfs_rg(x,y):
+  queue = deque()
+  queue.append((x,y))
+  visited[x][y]=1
+
+  while queue:
+    x,y = queue.popleft()
+    if matrix[x][y]=='R' or matrix[x][y]=='G':
+      for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if nx<0 or ny<0 or nx>n-1 or ny>n-1 :
+          continue
+        if matrix[nx][ny] != 'B' and visited[nx][ny]==0:
+          visited[nx][ny]=1
+          queue.append((nx,ny))   
+
+    else:
+      for i in range(4):
+        nx = x + dx[i]
+        ny = y + dy[i]
+        if nx<0 or ny<0 or nx>n-1 or ny>n-1:
+          continue
+        if matrix[nx][ny] == matrix[x][y] and visited[nx][ny]==0:
+          visited[nx][ny]=1
+          queue.append((nx,ny))  
+
+
+not_person =0
+
+for i in range(n):
+  for j in range(n):
+    if visited[i][j]==0:
+      bfs(i,j)
+      not_person +=1
+
+visited = [[0]*n for _ in range(n)]
+rg_person = 0
+for i in range(n):
+  for j in range(n):
+    if visited[i][j]==0:
+      bfs_rg(i,j)
+      rg_person +=1
+
+print(not_person,rg_person)
